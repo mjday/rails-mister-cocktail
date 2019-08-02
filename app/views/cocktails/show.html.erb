@@ -3,35 +3,34 @@
     <h1>Mother's Ruin</h1>
   </div>
 </div>
-
-<div class="container">
   <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @cocktail.name %>
-  </p>
+<div class="container d-flex flex-row justify-content-start mt-5 w-100">
+
+  <div class="w-50 p-3">
+    <h1 id="cocktail_name"><strong><%= @cocktail.name %></strong></h1>
 
 
-  <h1>Ingredients</h1>
+    <h2>Ingredients</h2>
 
-      <% @doses.each do |dose| %>
-          <p><%= dose.ingredient.name %> - <%= dose.description %></p>
-      <% end %>
+    <% @doses.each do |dose| %>
+    <p>* <%= dose.description %> of <%=  dose.ingredient.name %> </p>
+    <% end %>
 
-  <%= link_to 'Back to Cocktails', cocktails_path, class: "btn btn-warning" %>
+    <%= link_to 'Back to Cocktails', cocktails_path, class: "btn btn-warning" %>
+  </div>
 
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <%= simple_form_for ([@cocktail, @dose]) do |f| %>
-         <%= f.input :description %>
-         <%= f.association :ingredient %>
-         <%= f.button :submit, class: "btn btn-primary" %>
-        <% end %>
+    <div class="container ml-1 p-3">
+      <div class="row w-60">
+        <div class="col-md-6">
+          <%= simple_form_for ([@cocktail, @dose]) do |f| %>
+          <%= f.association :ingredient %>
+          <%= f.input :description, label: 'Describe the dose' %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
-    </div>
+
   </div>
 
 </div>

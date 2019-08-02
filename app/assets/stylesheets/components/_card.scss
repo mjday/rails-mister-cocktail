@@ -14,12 +14,17 @@
   }
 }
 
+#cocktail_name {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
 .card-category {
   position: relative;
   background-size: cover;
   background-position: center;
   height: 180px;
   display: flex;
+  margin: 8px;
   justify-content: center;
   align-items: center;
   color: white;
@@ -52,10 +57,25 @@
   }
 }
 
+.card-link {
+  text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 // Smallest device

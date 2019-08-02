@@ -4,19 +4,29 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mt-5">
 
-  <%= link_to 'Add a new cocktail', new_cocktail_path, class: "btn btn-warning" %>
+  <div class="text-center">
+    <h3>An app that allows you to concoct your favourite cocktail recipe...</h3>
+  <%= link_to 'Add a new cocktail', new_cocktail_path, class: "btn btn-warning mt-2" %>
 
+  </div>
 
   <div class="container mt-3">
+    <p>Browse cocktails made by others:</p>
     <div class="cards">
       <% @cocktails.each do |cocktail| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('')">
+      <%= link_to cocktail_path(cocktail) do %>
+        <% if cocktail.photo.present? %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+        <% else %>
+           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5915/glass-wine-glasses-empty-5915.jpg?auto=compress&cs=tinysrgb&h=650&w=940)">
+        <% end %>
         <div class="cocktail-info">
           <%= cocktail.name %>
         </div>
       </div>
+      <% end %>
       <% end %>
     </div>
 
